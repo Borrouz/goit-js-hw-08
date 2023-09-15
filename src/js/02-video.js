@@ -9,7 +9,7 @@ const locStorSet = function(e) {
   localStorage.setItem(currentTime, startSec)
    
 }
-const playerOn = player.on('timeupdate', throttle(locStorSet, 1000));
+player.on('timeupdate', throttle(locStorSet, 1000));
 
 
 player.setCurrentTime(localStorage.getItem(currentTime)).then(function(seconds) {
