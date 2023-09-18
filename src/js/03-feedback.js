@@ -8,7 +8,7 @@ const LOCALST_KEY = 'feedback-form-state';
 
 form.addEventListener('input', throttle(onInput, 500));
 function onInput (e) {
-    const data = JSON.parse(localStorage.getItem(LOCALST_KEY)) || {};
+    const data = JSON.parse(localStorage.getItem(LOCALST_KEY)) || {email: '', message: ''};
     data[e.target.name ]= e.target.value;
     localStorage.setItem(LOCALST_KEY, JSON.stringify(data));
 
@@ -17,7 +17,7 @@ window.addEventListener('load', onLoad);
 function onLoad() {
     const dataOn = JSON.parse(localStorage.getItem(LOCALST_KEY))
     if (dataOn) {
-        textarea.value = dataOn.message ? dataOn.message : '';
+        textarea.value = dataOn.message 
         email.value = dataOn.email;
     }
 }
@@ -32,4 +32,3 @@ function onSubmit(e) {
         form.reset()
     }
 }
-
